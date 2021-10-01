@@ -1,6 +1,7 @@
 import argparse
 import os
 import subprocess
+from distutils import dir_util
 
 class Wizard:
     def __init__(self,
@@ -25,32 +26,35 @@ class Wizard:
         os.chdir(self.project_dir)
 
     def clone_git(self):
-        print(f"*** Cloning {self.git_repo} repository")
+        print(f"==== Cloning {self.git_repo} repository ====")
         subprocess.run(["git", "clone", self.git_repo], check=True)
         self.project_name = self.git_repo.split("/")[-1]
 
     def create_project(self):
-        print(f"*** Creating {self.project_name} project folder")
-        os.mkdir(self.project_name)
+        print(f"==== Creating {self.project_name} project folder ====")
+        dir_util.mkpath(self.project_name)
 
     def create_main_dir(self):
-        print("*** Creating main directories")
-        os.chdir(self.project_name)
-        os.mkdir("Frontend")
-        os.mkdir("Backend")
+        print("==== Creating main directories ====")
+        dir_util.mkpath(f"./{self.project_name}/Frontend")
+        dir_util.mkpath(f"./{self.project_name}/Backend")
 
     def create_frontends(self):
-        os.chdir("Frontend")
-        for i,app in enumerate(self.frontends):
-            if i==0:
-                subprocess.run(f"npx create-react-app {self.frontends[0]}")
-                
+        print("==== Creating frontends ====")
+        subprocess.run(f"npx create-react-app ./{self.project_name}/Frontend/react")
+        for app in self.frontends:
+            print(f"==== Creating {app} app ====")
+            dir_util.copy_tree(f"./{self.project_name}/Frontend/react", f"./{self.project_name}/Frontend/{app}")
+        dir_util.remove_tree(f"./{self.project_name}/Frontend/react")     
 
     
     def create_backend(self):
-        pass
+        print("==== Creating backend ====")
+        
 
     def create_env(self):
+        #make folder
+        #add files
         pass
 
     def __call__(self):
