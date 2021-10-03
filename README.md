@@ -32,6 +32,10 @@ project
      |    ...
 ```
 
+## Requirements
+* [Docker 19 or later](https://docs.docker.com/get-docker/)
+* [Python 3.7 or later](https://www.python.org/downloads/)
+
 ## Installation
 
 Download and extract the .zip file or clone the repository
