@@ -122,8 +122,8 @@ class Wizard:
             self.create_docker_compose_files()
 
             print("#*#* HAPPY CODING *#*#")
-        except Exception as e:
-            print(e)
+        except Exception as error:
+            print(error)
 
 
 parser = argparse.ArgumentParser(description="Initializes fullstack web project files and directories")
