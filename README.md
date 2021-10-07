@@ -35,6 +35,7 @@ project
 ## Requirements
 * [Docker 19 or later](https://docs.docker.com/get-docker/)
 * [Python 3.7 or later](https://www.python.org/downloads/)
+* [NodeJS 12.8.1 or later](https://nodejs.org/en/download/)
 
 ## Installation
 
