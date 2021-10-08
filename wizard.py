@@ -116,7 +116,7 @@ class Wizard:
                 self.clone_git()
         
             self.create_main_dir()
-            #self.create_frontends()
+            self.create_frontends()
             self.create_backend()
             self.create_env()
             self.create_docker_compose_files()
